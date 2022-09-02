@@ -20,23 +20,25 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(label)
 
+        # < MENU BAR SETUP >
+
+        menu_bar = self.menuBar() # Creating menu bar
+
+        # File submenu
+        file_menu = menu_bar.addMenu("&File")
+
         load_container = QAction("Load container...", self)
         load_container.setStatusTip("Open file dialog and choose json file")
         load_container.triggered.connect(self.load_container_on_click)
-
-
-
-        menu_bar = self.menuBar()
-
-        file_menu = menu_bar.addMenu("&File")
         file_menu.addAction(load_container)
+
 
 
     def load_container_on_click(self, s):
         file_dialog = QFileDialog.getOpenFileName(
             self,
             "Open JSON file",
-            "/home/jana",
+            "/home/",
             "JSON Files (*.json)"
         )
         file_dialog.show()
