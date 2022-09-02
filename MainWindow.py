@@ -1,10 +1,15 @@
 import sys
-from PySide6.QtWidgets import (
-    QMainWindow, QApplication,
-    QLabel, QToolBar, QStatusBar,
-    QFileDialog
-)
-from PySide6.QtGui import QAction, QIcon
+
+from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QLabel
+from PySide6.QtWidgets import QToolBar
+from PySide6.QtWidgets import QStatusBar
+from PySide6.QtWidgets import QFileDialog
+
+from PySide6.QtGui import QAction
+from PySide6.QtGui import QIcon
+
 from PySide6.QtCore import Qt
 
 
