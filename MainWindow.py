@@ -40,13 +40,14 @@ class MainWindow(QMainWindow):
 
 
     def load_container_on_click(self, s):
-        file_dialog = QFileDialog.getOpenFileName(
+        file_path = QFileDialog.getOpenFileName(
             self,
             "Open JSON file",
             "/home/",
             "JSON Files (*.json)"
-        )
-        file_dialog.show()
+        )[0]
+
+        print(file_path)
 
 
 if __name__ == "__main__":
