@@ -2,8 +2,7 @@ from classes.Snippet import Snippet
 from classes.Container import Container
 from classes.Loader import Loader
 
-def main():
-    loader = Loader(filepath='save.json')
+def create_example(loader):
     main_container = loader.load_object()
     sub_container = Container(name='sub')
     snippet = Snippet(name='greetings', content='hi')
@@ -12,6 +11,10 @@ def main():
     sn = Snippet(name='snippet', content='snippet at root container')
     main_container.append(sn)
     loader.save_object(main_container)
+
+def main():
+    loader = Loader(filepath='save.json')
+    
     print(main_container)
 
 if __name__ == '__main__':
