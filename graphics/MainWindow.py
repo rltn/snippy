@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 
 from PySide6.QtWidgets import (
     QMainWindow,
@@ -18,6 +19,8 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super(MainWindow, self).__init__()
+        
+        # Window setup
         
         self.setWindowTitle("snippy")
         
@@ -54,7 +57,7 @@ class MainWindow(QMainWindow):
         file_path = QFileDialog.getOpenFileName(
             self,
             "Open JSON file",
-            "/home/",
+            str(Path.home()),
             "JSON Files (*.json)"
         )[0]
 
