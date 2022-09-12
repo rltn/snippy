@@ -8,6 +8,7 @@ from classes.Loader import Loader
 
 from graphics.MainWindow import MainWindow
 
+import qdarktheme
 
 def create_example(loader):
     main_container = loader.load_object()
@@ -25,6 +26,7 @@ def main():
     app = QApplication(sys.argv)
     main_window = MainWindow()
     main_window.show()
+    app.setStyleSheet(qdarktheme.load_stylesheet())
     app.exec()
 
 if __name__ == '__main__':

@@ -1,1 +1,2 @@
 pyside6
+pyqtdarktheme == 1.1.0
