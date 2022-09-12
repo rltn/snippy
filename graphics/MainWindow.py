@@ -4,12 +4,13 @@ from pathlib import Path
 from PySide6.QtWidgets import (
     QMainWindow,
     QApplication,
-    QLabel,
     QFileDialog,
-    QTreeView,
-    QTextEdit,
+    QLabel,
     QDockWidget,
-    QSplitter
+    QTextEdit,
+    QTreeWidget,
+    QTreeWidgetItem,
+    QSplitter,
 )
 
 from PySide6.QtGui import QAction
@@ -30,7 +31,13 @@ class MainWindow(QMainWindow):
         # 
         # self.setCentralWidget(label)
         
-        self.tree_view = QTreeView()
+        self.tree_view = QTreeWidget()
+        # item = QTreeWidgetItem()
+        # treeWidget.setColumnCount(1)
+        # *> = QList<QTreeWidgetItem()>
+        # for i in range(0, 10):
+        #     items.append(QTreeWidgetItem(QTreeWidget (None), QStringList(QString("item: %1").arg(i))))
+        # treeWidget.insertTopLevelItems(0, items)
         
         self.text_editor = QTextEdit()
         
@@ -54,11 +61,11 @@ class MainWindow(QMainWindow):
         file_menu.addAction(load_container)
 
     def load_container_triggered(self, s):
-        file_path = QFileDialog.getOpenFileName(
+        savefile_path = QFileDialog.getOpenFileName(
             self,
             "Open JSON file",
             str(Path.home()),
             "JSON Files (*.json)"
         )[0]
 
-        print(file_path)
+        print(savefile_path)
