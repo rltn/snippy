@@ -24,7 +24,7 @@ def create_example(loader):
 def main():
     loader = Loader(filepath='save.json')
     app = QApplication(sys.argv)
-    main_window = MainWindow()
+    main_window = MainWindow(loader)
     main_window.show()
     app.setStyleSheet(qdarktheme.load_stylesheet())
     app.exec()

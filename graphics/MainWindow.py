@@ -15,22 +15,29 @@ from PySide6.QtWidgets import (
 
 from PySide6.QtGui import QAction
 
+from classes.Loader import Loader
+from classes.Container import Container
+from classes.Snippet import Snippet
+
+from graphics.TreeWidgetItem import TreeWidgetItem
 
 class MainWindow(QMainWindow):
 
-    def __init__(self):
+    def __init__(self, loader):
         super(MainWindow, self).__init__()
-        
+
+        self.loader = loader
+        self.container = None
         # Window setup
-        
+
         self.setWindowTitle("snippy")
-        
+
         # Empty label adding
         # label = QLabel("Hey! Load container or create new own.")
         # label.setAlignment(Qt.AlignCenter)
-        # 
+        #
         # self.setCentralWidget(label)
-        
+
         self.tree_view = QTreeWidget()
         # item = QTreeWidgetItem()
         # treeWidget.setColumnCount(1)
@@ -38,16 +45,16 @@ class MainWindow(QMainWindow):
         # for i in range(0, 10):
         #     items.append(QTreeWidgetItem(QTreeWidget (None), QStringList(QString("item: %1").arg(i))))
         # treeWidget.insertTopLevelItems(0, items)
-        
+
         self.text_editor = QTextEdit()
-        
+
         self.splitter = QSplitter()
-        
+
         self.splitter.addWidget(self.tree_view)
         self.splitter.addWidget(self.text_editor)
-        
+
         self.setCentralWidget(self.splitter)
-        
+
         # < MENU BAR SETUP >
 
         menu_bar = self.menuBar() # Creating menu bar
@@ -67,5 +74,13 @@ class MainWindow(QMainWindow):
             str(Path.home()),
             "JSON Files (*.json)"
         )[0]
+        if savefile_path:
+            self.container = self.loader.load_object(savefile_path)
 
         print(savefile_path)
+        self.bump_container()
+
+    def bump_container(self):
+        self.tree_view.clear()
+
+        self.container_item = TreeWidgetItem(self.tree_view, self.container)
