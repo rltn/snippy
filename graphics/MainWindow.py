@@ -76,6 +76,7 @@ class MainWindow(QMainWindow):
         )[0]
         if savefile_path:
             self.container = self.loader.load_object(savefile_path)
+            self.container_savepath = savefile_path
 
         print(savefile_path)
         self.bump_container()
