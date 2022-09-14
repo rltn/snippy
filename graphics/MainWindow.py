@@ -39,6 +39,7 @@ class MainWindow(QMainWindow):
         # self.setCentralWidget(label)
 
         self.tree_view = QTreeWidget()
+        self.tree_view.itemClicked.connect(self.tree_view_item_clicked)
         # item = QTreeWidgetItem()
         # treeWidget.setColumnCount(1)
         # *> = QList<QTreeWidgetItem()>
@@ -66,6 +67,9 @@ class MainWindow(QMainWindow):
         load_container.setStatusTip("Open file dialog and choose json file")
         load_container.triggered.connect(self.load_container_triggered)
         file_menu.addAction(load_container)
+
+    def tree_view_item_clicked(self, item, column):
+        print(item, column)
 
     def load_container_triggered(self, s):
         savefile_path = QFileDialog.getOpenFileName(
