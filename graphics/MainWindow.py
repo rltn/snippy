@@ -28,25 +28,16 @@ class MainWindow(QMainWindow):
 
         self.loader = loader
         self.container = None
+        self.current_item = None
+        
         # Window setup
-
         self.setWindowTitle("snippy")
 
-        # Empty label adding
-        # label = QLabel("Hey! Load container or create new own.")
-        # label.setAlignment(Qt.AlignCenter)
-        #
-        # self.setCentralWidget(label)
-
+        # Container's tree viewing
         self.tree_view = QTreeWidget()
         self.tree_view.itemClicked.connect(self.tree_view_item_clicked)
-        # item = QTreeWidgetItem()
-        # treeWidget.setColumnCount(1)
-        # *> = QList<QTreeWidgetItem()>
-        # for i in range(0, 10):
-        #     items.append(QTreeWidgetItem(QTreeWidget (None), QStringList(QString("item: %1").arg(i))))
-        # treeWidget.insertTopLevelItems(0, items)
-
+        
+        # Snippet's content viewing
         self.text_editor = QTextEdit()
 
         self.splitter = QSplitter()
