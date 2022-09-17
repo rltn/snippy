@@ -11,7 +11,7 @@ class TreeWidgetItem(QTreeWidgetItem):
         parent (QTreeWidget) : Item's QTreeWidget parent.
         obj    (object)         : Item's name. just an example.
         '''
-        super().__init__(parent)
+        super(TreeWidgetItem, self).__init__(parent)
         self.obj = obj
         # Column 0 - Text:
         self.setText(0, self.obj.get('name'))

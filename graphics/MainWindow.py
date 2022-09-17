@@ -69,6 +69,10 @@ class MainWindow(QMainWindow):
         file_menu.addAction(load_container)
 
     def tree_view_item_clicked(self, item, column):
+        if self.current_item and type(self.current_item.obj) == Snippet:
+            self.current_item.obj.set('content', self.text_editor.toPlainText())
+        self.text_editor.setPlainText(item.obj.get('content'))
+        self.current_item = item
         print(item, column)
 
     def load_container_triggered(self, s):
@@ -81,9 +85,10 @@ class MainWindow(QMainWindow):
         if savefile_path:
             self.container = self.loader.load_object(savefile_path)
             self.container_savepath = savefile_path
+            self.bump_container()
+            self.current_item = None
 
         print(savefile_path)
-        self.bump_container()
 
     def bump_container(self):
         self.tree_view.clear()
