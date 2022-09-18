@@ -13,7 +13,11 @@ from PySide6.QtWidgets import (
     QSplitter
 )
 
-from PySide6.QtGui import QAction, QFont
+from PySide6.QtGui import (
+    QAction,
+    QFont,
+    QFontMetricsF
+)
 
 from classes.Loader import Loader
 from classes.Container import Container
@@ -44,7 +48,13 @@ class MainWindow(QMainWindow):
         font.setStyleHint(QFont.TypeWriter)
 
         self.text_editor.setCurrentFont(font)
-
+        # self.text_editor.setTabStopDistance( # not so accurate
+        #     QFontMetricsF(
+        #         self.text_editor.font()
+        #     ).horizontalAdvance(' ') * 4
+        # )
+        # TODO: still not so accurate, work on it later
+        self.text_editor.setTabStopDistance(40)
 
         self.splitter = QSplitter()
 
