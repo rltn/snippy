@@ -10,10 +10,10 @@ from PySide6.QtWidgets import (
     QTextEdit,
     QTreeWidget,
     QTreeWidgetItem,
-    QSplitter,
+    QSplitter
 )
 
-from PySide6.QtGui import QAction
+from PySide6.QtGui import QAction, QFont
 
 from classes.Loader import Loader
 from classes.Container import Container
@@ -29,16 +29,22 @@ class MainWindow(QMainWindow):
         self.loader = loader
         self.container = None
         self.current_item = None
-        
+
         # Window setup
         self.setWindowTitle("snippy")
 
         # Container's tree viewing
         self.tree_view = QTreeWidget()
         self.tree_view.itemClicked.connect(self.tree_view_item_clicked)
-        
+
         # Snippet's content viewing
         self.text_editor = QTextEdit()
+
+        font = QFont("Monospace")
+        font.setStyleHint(QFont.TypeWriter)
+
+        self.text_editor.setCurrentFont(font)
+
 
         self.splitter = QSplitter()
 
